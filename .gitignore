@@ -1,0 +1,24 @@
+.env
+.env.*
+.vercel/
+node_modules/
+*.log
+*.tmp
+Thumbs.db
+.DS_Store
+
+/data/catalogo_karaoke.csv
+
+# Versionar apenas os recursos usados pelo catálogo.
+/assets/*
+!/assets/04. Footer/
+/assets/04. Footer/*
+!/assets/04. Footer/footer-tag-Desban.svg
+!/assets/06. Background/
+/assets/06. Background/*
+!/assets/06. Background/graf-topo-dir.svg
+!/assets/07. fonts/
+/assets/07. fonts/*
+!/assets/07. fonts/RethinkSans/
+/assets/07. fonts/RethinkSans/*
+!/assets/07. fonts/RethinkSans/RethinkSans-VariableFont_wght.ttf

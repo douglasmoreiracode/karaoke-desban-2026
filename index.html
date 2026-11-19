@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#00294d">
+  <meta name="description" content="Consulte as músicas e os códigos do Karaokê Desban 2026.">
+  <title>Karaokê Desban 2026</title>
+  <link rel="icon" type="image/svg+xml" href="assets/04. Footer/footer-tag-Desban.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="event-brand">
+        <img src="assets/04. Footer/footer-tag-Desban.svg" alt="Desban" width="158" height="36">
+        <span>Confraternização 2026</span>
+      </div>
+      <h1>Karaokê <span>Desban 2026</span></h1>
+      <p>Encontre sua música e anote o código para cantar.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <form class="catalog-search" id="catalog-search" role="search" aria-label="Catálogo de músicas">
+      <div class="field">
+        <label for="search">Buscar no catálogo</label>
+        <div class="search-control">
+          <span class="search-icon" aria-hidden="true"></span>
+          <input id="search" name="busca" type="search" autocomplete="off" enterkeyhint="search" aria-describedby="search-hint" disabled
+            placeholder="Busque por música, artista, código ou trecho da letra...">
+          <span class="search-placeholder" aria-hidden="true">Busque por música, artista, código ou trecho da letra...</span>
+          <button class="clear-search" id="clear-search" type="button" aria-label="Limpar busca" hidden>
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <p class="search-hint" id="search-hint">Comece pela sua música favorita.</p>
+      </div>
+      <div class="field">
+        <label for="language">Idioma</label>
+        <div class="select-control">
+          <select id="language" name="idioma" disabled>
+            <option value="">Todos os idiomas</option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <section class="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-heading">
+        <h2 id="catalog-title">Músicas</h2>
+        <div class="catalog-views" id="catalog-views" role="group" aria-label="Visualização das músicas" hidden>
+          <button class="catalog-view" id="view-all" type="button" aria-pressed="true" aria-controls="song-list">Todas</button>
+          <button class="catalog-view" id="view-favorites" type="button" aria-pressed="false" aria-controls="song-list">
+            Favoritas <span class="favorites-count" id="favorites-count">0</span>
+          </button>
+        </div>
+        <p class="result-count" id="result-count" role="status" aria-atomic="true"></p>
+      </div>
+      <p class="storage-notice" id="storage-notice" role="status"></p>
+
+      <noscript>
+        <p class="catalog-message">Ative o JavaScript no navegador para consultar o catálogo.</p>
+      </noscript>
+
+      <div class="catalog-message" id="empty-results" hidden>
+        <h3>Nenhuma música encontrada</h3>
+        <p>Tente buscar com menos letras ou escolha outro idioma.</p>
+        <button class="action-button" id="reset-filters" type="button">Limpar filtros</button>
+      </div>
+
+      <div class="catalog-message" id="empty-favorites" hidden>
+        <h3>Você ainda não escolheu suas músicas!</h3>
+        <p>Explore o catálogo e toque no coração para salvar suas favoritas.</p>
+        <button class="action-button" id="browse-catalog" type="button">Ver todas as músicas</button>
+      </div>
+
+      <div class="catalog-message" id="load-error" hidden>
+        <h3>Não foi possível carregar o catálogo</h3>
+        <p id="error-detail">Confira sua conexão e tente novamente.</p>
+        <button class="action-button" id="retry-load" type="button">Tentar novamente</button>
+      </div>
+
+      <ul class="song-list" id="song-list" role="list"></ul>
+      <div class="catalog-actions">
+        <button class="action-button" id="load-more" type="button" hidden>Carregar mais</button>
+      </div>
+    </section>
+  </main>
+
+  <p class="copy-feedback" id="copy-feedback" role="status" aria-atomic="true"></p>
+
+  <template id="song-template">
+    <li class="song-card">
+      <div class="song-heading">
+        <div>
+          <h3 class="song-title"></h3>
+          <p class="song-artist"></p>
+        </div>
+        <button class="song-code" type="button">
+          <span class="song-code-label">
+            Código
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+              <rect x="5.5" y="5.5" width="8.5" height="8.5" rx="1.5"/>
+              <path d="M3 10.5H2.5a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1V3"/>
+            </svg>
+          </span>
+          <strong></strong>
+        </button>
+      </div>
+      <div class="song-details">
+        <p class="song-opening">
+          <span class="song-opening-label">Início da letra</span>
+          <span class="song-lyrics"></span>
+        </p>
+        <div class="song-meta">
+          <p class="song-language">
+            <span class="visually-hidden">Idioma: </span><span class="song-language-value"></span>
+          </p>
+          <button class="song-favorite" type="button" aria-pressed="false">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M20.8 5.7a5.2 5.2 0 0 0-7.4 0L12 7.1l-1.4-1.4a5.2 5.2 0 1 0-7.4 7.4L12 22l8.8-8.9a5.2 5.2 0 0 0 0-7.4Z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </li>
+  </template>
+</body>
+</html>
